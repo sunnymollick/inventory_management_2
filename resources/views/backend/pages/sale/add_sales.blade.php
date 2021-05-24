@@ -4,13 +4,13 @@
     <div class="card">
         <div class="card-header">
             <h3 class="text-center text-dark">Add Purchase
-                <a href="{{ route('purcahses') }}" class="btn btn-info" style="float: right">Purchase List</a>
+                <a href="{{ route('sales') }}" class="btn btn-info" style="float: right">Purchase List</a>
             </h3>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <form action="{{ route('store.purchase') }}" method="post">
+                    <form action="{{ route('store.sale') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">Date</label>
@@ -35,26 +35,16 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-
-
                         <div class="form-group">
                             <label for="">Product Code</label>
-                            <select name="product_code" class="form-control" id="productCode">
-                                <option value="">Select Product Code</option>
-                                @foreach ($products as $row)
-                                    <option value="{{ $row->product_code }}">{{ $row->product_code }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" name="product_code" class="form-control" placeholder="Enter Product Code" id="" required>
                             @error('product_code')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-
                         <div class="form-group">
                             <label for="">Product Description</label>
-                            <textarea name="product_description" id="productDescription" cols="15" rows="5" class="form-control" required>
+                            <textarea name="product_description" id="" cols="15" rows="5" class="form-control" required>
 
 
                             </textarea>
@@ -84,35 +74,11 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-info btn-block" type="submit">Purcahses</button>
+                            <button class="btn btn-info btn-block" type="submit">Sales</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-    <script>
-        $(document).ready(function(){
-            $("#productCode").change(function(){
-                var product_code = $("#productCode").val();
-                $.ajax({
-                        url: "http://127.0.0.1:8000/api/get-product/" + product_code,
-                        dataType: 'json',
-                        success: function(data){
-                            document.getElementById("productDescription").innerHTML = data.product.product_description
-                            console.log(data.product.product_description)
-                        }
-                    });
-
-
-            });
-        });
-    </script>
 @endsection

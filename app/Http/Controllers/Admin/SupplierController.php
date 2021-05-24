@@ -32,7 +32,11 @@ class SupplierController extends Controller{
         $supplier->payment = $request->payment ;
         $supplier->closing_bal = $request->closing_bal ;
         if ($supplier->save()) {
-            return redirect('all/suppliers');
+            $notification=array(
+                'messege'=>'supplier added',
+                'alert-type'=>'success'
+                 );
+            return redirect('all/suppliers')->with($notification);
         }
     }
 }

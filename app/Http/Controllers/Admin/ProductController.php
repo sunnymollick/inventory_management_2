@@ -21,11 +21,18 @@ class ProductController extends Controller{
         $product->product_code = $request->product_code;
         $product->product_description = $request->product_description;
         $product->opening_qty = $request->opening_qty;
-        $product->purchase_qty = $request->purchase_qty;
-        $product->sales_qty = $request->sales_qty;
-        $product->closing_qty = $request->closing_qty;
+        // $product->purchase_qty = $request->purchase_qty;
+        // $product->sales_qty = $request->sales_qty;
+        $product->closing_qty = $request->opening_qty;
         if ($product->save()) {
             return redirect('all/products');
         }
+    }
+
+    public function getProductDescription($product_code){
+        $product = Product::where('product_code',$product_code)->first();
+        return response()->json([
+            'product' => $product
+        ]);
     }
 }

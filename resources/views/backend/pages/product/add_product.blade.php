@@ -36,7 +36,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for=""> Purchase Quantity</label>
                             <input type="number" min="0" value="0" name="purchase_qty" class="form-control" placeholder="Enter Quantity" required>
                             @error('purchase_qty')
@@ -49,14 +49,16 @@
                             @error('sales_qty')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+
+                        {{-- <div class="form-group">
                             <label for=""> Closing Quantity</label>
                             <input type="number" min="0" value="0" name="closing_qty" class="form-control" placeholder="Enter Quantity" required>
                             @error('closing_qty')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                        </div>
+                        </div> --}}
+
                         <div class="form-group">
                             <button class="btn btn-info btn-block" type="submit">Add Product</button>
                         </div>

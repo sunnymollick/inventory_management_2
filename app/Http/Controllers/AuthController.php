@@ -13,6 +13,7 @@ class AuthController extends Controller{
             return redirect()->to('dashboard');
         }
         return view('backend.pages.auth.login');
+
     }
 
     public function register(){
@@ -27,17 +28,29 @@ class AuthController extends Controller{
         if(Hash::check($password, $user->password)) { // password matched
                 Session::put('userid',$user->id);
                 Session::put('useremail',$user->email);
-                return redirect()->to('/dashboard');
+                $notification=array(
+                    'messege'=>'Successfully Logged in',
+                    'alert-type'=>'success'
+                     );
+                   return Redirect('/dashboard')->with($notification);
             }
             else {
-                return redirect()->to('/');
+                $notification=array(
+                    'messege'=>'Something went wrong',
+                    'alert-type'=>'error'
+                     );
+                return redirect()->to('/')->with($notification);
             }
 
     }
 
     public function logout(){
         Session::flush();
-        return redirect('/');
+        $notification=array(
+            'messege'=>'User Logged Out',
+            'alert-type'=>'error'
+             );
+        return redirect('/')->with($notification);
     }
 
     public function registerStore(Request $request){
@@ -52,7 +65,11 @@ class AuthController extends Controller{
         $user->password = $password;
 
         if ($user->save()) {
-            return redirect('/');
+            $notification=array(
+                'messege'=>'User Registered Successfuly',
+                'alert-type'=>'error'
+                 );
+            return redirect('/')->with($notification);
         }
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Purcahse;
 use App\Models\Admin\Supplier;
+use App\Models\Admin\Product;
 
 class PurcahsesController extends Controller{
     public function purcahses(){
@@ -18,7 +19,8 @@ class PurcahsesController extends Controller{
     }
     public function addPurcahses(){
         $suppliers = Supplier::all();
-        return view('backend.pages.purchase.add_purcahses',['suppliers'=>$suppliers]);
+        $products = Product::all();
+        return view('backend.pages.purchase.add_purcahses',['suppliers'=>$suppliers , 'products' => $products]);
     }
 
     public function storePurcahses(Request $request){
@@ -43,7 +45,11 @@ class PurcahsesController extends Controller{
         $purchase->rate = $request->rate;
         $purchase->payment = $request->payment;
         if ($purchase->save()) {
-            return redirect('purcahses');
+            $notification=array(
+                'messege'=>'Purchase Added',
+                'alert-type'=>'success'
+                 );
+            return redirect('purcahses')->with($notification);
         }
     }
 }
