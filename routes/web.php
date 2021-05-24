@@ -31,8 +31,12 @@ Route::get('dashboard', function () {
     return view('backend.pages.dashboard');
 });
 
+// All Purchase Routes Go Here
 
 Route::get('purcahses',[PurcahsesController::class,'purcahses'])->name('purcahses');
+Route::get('add/purcahses/list',[PurcahsesController::class,'addPurcahses'])->name('add.purchase.list');
+
+// All Supplier Routes Go Here
 
 Route::get('all/suppliers',[SupplierController::class,'allSuppliers'])->name('all.suppliers');
 Route::get('create/suppliers',[SupplierController::class,'createSuppliers'])->name('add.supplier');
