@@ -14,5 +14,6 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('auth') }}/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
   </head>

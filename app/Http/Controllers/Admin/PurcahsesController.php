@@ -43,7 +43,11 @@ class PurcahsesController extends Controller{
         $purchase->rate = $request->rate;
         $purchase->payment = $request->payment;
         if ($purchase->save()) {
-            return redirect('purcahses');
+            $notification=array(
+                'messege'=>'Purchase Added',
+                'alert-type'=>'success'
+                 );
+            return redirect('purcahses')->with($notification);
         }
     }
 }

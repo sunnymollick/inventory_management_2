@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PurcahsesController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\SalesController;
+use App\Http\Controllers\Admin\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,17 @@ Route::post('store/purcahses',[PurcahsesController::class,'storePurcahses'])->na
 Route::get('all/suppliers',[SupplierController::class,'allSuppliers'])->name('all.suppliers');
 Route::get('create/suppliers',[SupplierController::class,'createSuppliers'])->name('add.supplier');
 Route::post('store/suppliers',[SupplierController::class,'storeSuppliers'])->name('store.supplier');
+
+// All Sale Routes Go Here
+Route::get('sales',[SalesController::class,'sales'])->name('sales');
+Route::get('add/sales/list',[SalesController::class,'addSales'])->name('add.sale.list');
+Route::post('store/sales',[SalesController::class,'storeSales'])->name('store.sale');
+
+// All Customer Routes Go Here
+
+Route::get('all/customers',[CustomerController::class,'allCustomers'])->name('all.customers');
+Route::get('create/customers',[CustomerController::class,'createCustomers'])->name('add.customer');
+Route::post('store/customers',[CustomerController::class,'storeCustomers'])->name('store.customer');
 
 
 });
