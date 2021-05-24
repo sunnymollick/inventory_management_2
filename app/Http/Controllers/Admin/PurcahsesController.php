@@ -20,4 +20,30 @@ class PurcahsesController extends Controller{
         $suppliers = Supplier::all();
         return view('backend.pages.purchase.add_purcahses',['suppliers'=>$suppliers]);
     }
+
+    public function storePurcahses(Request $request){
+        $validated = $request->validate([
+            'date' => 'required|date',
+            'supplier_id' => 'required',
+            'invoice_no' => 'required',
+            'product_code' => 'required',
+            'product_description' => 'required',
+            'qty' => 'required',
+            'rate' => 'required',
+            'payment' => 'required',
+        ]);
+
+        $purchase = new Purcahse();
+        $purchase->date = $request->date;
+        $purchase->supplier_id = $request->supplier_id;
+        $purchase->invoice_no = $request->invoice_no;
+        $purchase->product_code = $request->product_code;
+        $purchase->product_description = $request->product_description;
+        $purchase->qty = $request->qty;
+        $purchase->rate = $request->rate;
+        $purchase->payment = $request->payment;
+        if ($purchase->save()) {
+            return redirect('purcahses');
+        }
+    }
 }

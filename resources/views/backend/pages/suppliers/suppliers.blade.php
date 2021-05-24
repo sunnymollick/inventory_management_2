@@ -21,33 +21,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>Delete</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>Thornton</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Delete</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>Larry</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>Delete</td>
-              </tr>
+                @php($i = 1)
+                @foreach ($suppliers as $row)
+                <tr>
+                    <th>{{ $i++ }}</th>
+                    <td>{{ $row->name }}</td>
+                    <td>{{ $row->opening_bal }}</td>
+                    <td>{{ $row->purchase }}</td>
+                    <td>{{ $row->payment }}</td>
+                    <td>{{ $row->closing_bal }}</td>
+                    <td>
+                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="" class="btn btn-sm btn-info">Edit</a>
+                    </td>
+                  </tr>
+                @endforeach
+
             </tbody>
           </table>
 
