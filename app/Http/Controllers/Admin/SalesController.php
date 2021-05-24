@@ -4,24 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin\Purcahse;
+use App\Models\Admin\Sale;
 use App\Models\Admin\Supplier;
 
-class PurcahsesController extends Controller{
-    public function purcahses(){
-        $purchases = Purcahse::join('suppliers','purcahses.supplier_id','suppliers.id')
-                                    ->select('purcahses.*','suppliers.name')
+class SalesController extends Controller
+{
+    public function sales(){
+        $sales = sale::join('suppliers','sales.supplier_id','suppliers.id')
+                                    ->select('sales.*','suppliers.name')
                                     ->get();
 
 
-        return view('backend.pages.purchase.purcahses',['purchases'=>$purchases]);
+        return view('backend.pages.sale.sales',['sales'=>$sales]);
     }
-    public function addPurcahses(){
+    public function addSales(){
         $suppliers = Supplier::all();
-        return view('backend.pages.purchase.add_purcahses',['suppliers'=>$suppliers]);
+        return view('backend.pages.sale.add_sales',['suppliers'=>$suppliers]);
     }
 
-    public function storePurcahses(Request $request){
+    public function storeSales(Request $request){
         $validated = $request->validate([
             'date' => 'required|date',
             'supplier_id' => 'required',
@@ -33,7 +34,7 @@ class PurcahsesController extends Controller{
             'payment' => 'required',
         ]);
 
-        $purchase = new Purcahse();
+        $purchase = new sale();
         $purchase->date = $request->date;
         $purchase->supplier_id = $request->supplier_id;
         $purchase->invoice_no = $request->invoice_no;
@@ -44,10 +45,10 @@ class PurcahsesController extends Controller{
         $purchase->payment = $request->payment;
         if ($purchase->save()) {
             $notification=array(
-                'messege'=>'Purchase Added',
+                'messege'=>'Sale added',
                 'alert-type'=>'success'
                  );
-            return redirect('purcahses')->with($notification);
+            return redirect('sales')->with($notification);
         }
     }
 }
