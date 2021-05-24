@@ -3,8 +3,8 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3 class="text-center text-dark">All Purchase List
-            <a href="{{ route('add.sale.list') }}" class="btn btn-info" style="float: right">Add Purchase </a>
+        <h3 class="text-center text-dark">All Sale List
+            <a href="{{ route('add.sale.list') }}" class="btn btn-info" style="float: right">Add Sale </a>
         </h3>
     </div>
     <div class="card-body">

@@ -34,16 +34,16 @@ class SalesController extends Controller
             'payment' => 'required',
         ]);
 
-        $purchase = new sale();
-        $purchase->date = $request->date;
-        $purchase->supplier_id = $request->supplier_id;
-        $purchase->invoice_no = $request->invoice_no;
-        $purchase->product_code = $request->product_code;
-        $purchase->product_description = $request->product_description;
-        $purchase->qty = $request->qty;
-        $purchase->rate = $request->rate;
-        $purchase->payment = $request->payment;
-        if ($purchase->save()) {
+        $sale = new sale();
+        $sale->date = $request->date;
+        $sale->supplier_id = $request->supplier_id;
+        $sale->invoice_no = $request->invoice_no;
+        $sale->product_code = $request->product_code;
+        $sale->product_description = $request->product_description;
+        $sale->qty = $request->qty;
+        $sale->rate = $request->rate;
+        $sale->payment = $request->payment;
+        if ($sale->save()) {
             $notification=array(
                 'messege'=>'Sale added',
                 'alert-type'=>'success'
