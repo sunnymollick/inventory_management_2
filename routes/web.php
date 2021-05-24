@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PurcahsesController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,11 @@ Route::get('all/suppliers',[SupplierController::class,'allSuppliers'])->name('al
 Route::get('create/suppliers',[SupplierController::class,'createSuppliers'])->name('add.supplier');
 Route::post('store/suppliers',[SupplierController::class,'storeSuppliers'])->name('store.supplier');
 
+// Products Routes Go Here
+
+Route::get('all/products',[ProductController::class,'allProducts'])->name('all.products');
+Route::get('add/products',[ProductController::class,'addProducts'])->name('add.products');
+Route::post('store/product',[ProductController::class,'storeProduct'])->name('store.product');
 
 });
 

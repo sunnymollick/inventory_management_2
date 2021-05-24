@@ -16,6 +16,7 @@
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="{{ route('purcahses') }}">Purchases</a>
                     <a class="nav-link" href="{{ route('all.suppliers') }}">Suppliers</a>
+                    <a class="nav-link" href="{{ route('all.products') }}">Products</a>
                     <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                 </nav>
             </div>
